@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="node_modules/d3/dist/d3.js"></script>
+    <script src="main.js" type="module" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <svg id="tree"></svg>
+    </div>
+    <div class="wrapControl">
+      <input type="number" id="insert" placeholder="Значение" />
+      <button id="insertB">Вставить</button>
+    </div>
+    <div class="wrapControl">
+      <input type="number" id="delete" placeholder="Значение" />
+      <button id="deleteB">Удалить</button>
+    </div>
+    <div class="wrapControl">
+      <input type="number" id="search" placeholder="Значение" />
+      <button id="searchB">Найти</button>
+    </div>
+    <div class="wrapControl">
+      <button id="inOrderB">Симметричный Обход</button>
+      <button id="transformB">Преобразовать Дерево</button>
+    </div>
+  </body>
+</html>

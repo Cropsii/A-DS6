@@ -1,0 +1,29 @@
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  /* margin: 0; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+  min-height: 100dvh;
+  background: rgb(26, 26, 26);
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #444;
+}
+
+#tree {
+  margin: 20px;
+  display: inline-block;
+  width: 100%;
+}

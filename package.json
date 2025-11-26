@@ -1,0 +1,17 @@
+{
+  "name": "lb6",
+  "version": "1.0.0",
+  "description": "Лабороторная работа по АВЛ дереву",
+  "license": "ISC",
+  "author": "Cropsi",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "tree-visualization": "^1.0.4",
+    "treeviz": "^3.0.1"
+  }
+}
