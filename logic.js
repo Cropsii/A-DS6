@@ -182,23 +182,7 @@ export class AVLTree {
 
     return { found: false, steps: steps };
   }
-  /**
-   * Симметричный (in-order) обход дерева и возврат списка значений.
-   * @returns {number[]} Список значений вершин.
-   */
-  inOrderTraversal() {
-    const result = [];
-    const traverse = (node) => {
-      if (!node) return;
-      traverse(node.left);
-      result.push(node.value);
-      traverse(node.right);
-    };
-    traverse(this.root);
-    return result;
-  }
-
-  // Симметричный обход с колбэком и индексом (для преобразования)
+  // Симметричный обход с callback
   inOrderWithIndex(callback) {
     let index = 0;
     const traverse = (node) => {
@@ -212,23 +196,34 @@ export class AVLTree {
 
   // Первое преобразование: модуль и деление на 2 если кратно 4
   applyPrimaryTransform() {
-    const transform = (node) => {
-      if (!node) return;
-      transform(node.left);
+    this.inOrderWithIndex((node) => {
       if (node.value < 0) node.value = Math.abs(node.value);
       if (node.value % 4 === 0) node.value = node.value / 2;
-
-      transform(node.right);
-    };
-    transform(this.root);
-  }
-
-  applyIndexTransform() {
-    this.inOrderWithIndex((node, i) => {
-      node.value = Math.abs(node.value - i);
     });
   }
 
+  // Второе преобразование: разница с предыдущим элементом
+  applyIndexTransform() {
+    const values = this.inOrderTraversal();
+    const newValues = [values[0]];
+
+    for (let i = 1; i < values.length; i++) {
+      newValues.push(Math.abs(values[i] - values[i - 1]));
+    }
+
+    let index = 0;
+    this.inOrderWithIndex((node) => {
+      node.value = newValues[index++];
+    });
+  }
+
+  // inOrderTraversal
+  inOrderTraversal() {
+    const result = [];
+    this.inOrderWithIndex((node) => result.push(node.value));
+    return result;
+  }
+  // transformTree
   transformTree() {
     this.applyPrimaryTransform();
     this.applyIndexTransform();
